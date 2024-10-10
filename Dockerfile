@@ -5,7 +5,7 @@ FROM linuxserver/wireguard
 ENV PUID=1000
 ENV PGID=1000
 ENV WG_PORT=51820
-ENV WG_SERVERURL=your_public_ip_or_domain
+ENV WG_SERVERURL=122.182.128.202
 ENV WG_MTU=1420
 
 # Expose the WireGuard port
