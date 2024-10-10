@@ -1,10 +1,15 @@
-FROM kylemanna/openvpn
+# Use a lightweight base image
+FROM linuxserver/wireguard
 
-ENV OVPN_DATA="/etc/openvpn"
+# Set environment variables
+ENV PUID=1000
+ENV PGID=1000
+ENV WG_PORT=51820
+ENV WG_SERVERURL=your_public_ip_or_domain
+ENV WG_MTU=1420
 
-# Copy the environment setup script
-COPY ovpn_env.sh /etc/openvpn/ovpn_env.sh
+# Expose the WireGuard port
+EXPOSE 51820/udp
 
-# Initialize the OpenVPN configuration
-RUN ovpn_genconfig -u udp://44.226.145.213
-RUN ovpn_initpki nopass
+# Start WireGuard
+CMD ["run"]
